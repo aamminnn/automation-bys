@@ -1,0 +1,24 @@
+Common functions used in script
+
+Finding element:
+Using CSS = driver.find_element(By.CSS_SELECTOR, '.dropdown-item.btn-link')
+# Using CSS means combining multiple same elements such as class, the syntax always start with '.' and connecting each elements using '.'
+Using Class = driver.find_element(By.CLASS_NAME, 'dropdown-item') # CLASS_NAME always take only one element.
+Using id = driver.find_element(By.ID, '.dropdown-item.btn-link') # Same syntax as class
+
+Actions for element:
+click on button = driver.find_element(By.CSS_SELECTOR, '.dropdown-item.btn-link').click()
+input some value = driver.find_element(By.CSS_SELECTOR, '.dropdown-item.btn-link').send_keys("Value")
+
+Logging and print statement:
+saving basic output = logger.debug("message")
+saving important output = logger.info("message")
+Display at terminal = print("message")
+logger and display at same time = logger.debug("log message", "display message") # notice it takes to string arguments
+
+Getting url
+driver.get(f'{url}/{org_name}/{repo_name}/to_any_webpage')
+#note that this is robust, the only important is {url}, seperate by '/'
+
+Set a pause:
+time.sleep('2') # 2 means 2 seconds

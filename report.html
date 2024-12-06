@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .summary, .details {
+            margin-bottom: 20px;
+        }
+        .summary table, .details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .summary th, .details th {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: left;
+        }
+        .summary td, .details td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .status-passed {
+            color: green;
+        }
+        .status-failed {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Report</h1>
+
+    <div class="version">
+        <h2>Version</h2>
+        <p>3.15.0</p>
+    </div>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <table>
+            <tr>
+                <th>Total Tests</th>
+                <td id="total-tests">0</td>
+            </tr>
+            <tr>
+                <th>Passed</th>
+                <td id="passed-tests" class="status-passed">0</td>
+            </tr>
+            <tr>
+                <th>Failed</th>
+                <td id="failed-tests" class="status-failed">0</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="details">
+        <h2>Detailed Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="test-cases">
+                <!-- Test case rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!--  
+    <script>
+        // Example data
+        const testResults = [
+            { name: "Test Case 1", status: "Passed", details: "Successfully logged in." },
+            { name: "Test Case 2", status: "Failed", details: "Failed to find the submit button." }
+        ];
+
+        const totalTests = testResults.length;
+        const passedTests = testResults.filter(result => result.status === "Passed").length;
+        const failedTests = testResults.filter(result => result.status === "Failed").length;
+
+        document.getElementById('total-tests').textContent = totalTests;
+        document.getElementById('passed-tests').textContent = passedTests;
+        document.getElementById('failed-tests').textContent = failedTests;
+
+        const testCasesElement = document.getElementById('test-cases');
+        testResults.forEach(result => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${result.name}</td>
+                <td class="${result.status.toLowerCase()}">${result.status}</td>
+                <td>${result.details}</td>
+            `;
+            testCasesElement.appendChild(row);
+        });
+    </script>
+    -->
+
+    <script>
+        // Fetch test results from the JSON file and display them
+        fetch('report_html.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // Check if data is fetched properly
+                const totalTests = data.length;
+                const passedTests = data.filter(test => test.status === "Passed").length;
+                const failedTests = data.filter(test => test.status === "Failed").length;
+
+                document.getElementById('total-tests').textContent = totalTests;
+                document.getElementById('passed-tests').textContent = passedTests;
+                document.getElementById('failed-tests').textContent = failedTests;
+
+                const testCasesElement = document.getElementById('test-cases');
+                data.forEach(test => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${test.name}</td>
+                        <td class="${test.status.toLowerCase()}">${test.status}</td>
+                        <td>${test.details}</td>
+                    `;
+                    testCasesElement.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error loading test results:', error));
+    </script>
+</body>
+</html>

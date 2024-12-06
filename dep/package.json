@@ -1,0 +1,19 @@
+{
+  "name": "@wangming98160/package-5.1.0",
+  "version": "5.1.0",
+  "description": "This exercise checks your ability to publish to a GitHub Packages registry. It is automatically graded via a workflow once you have completed the instructions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangming98160/exercise-publish-packagee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangming98160/exercise-publish-packagee/issues"
+  },
+  "homepage": "https://github.com/wangming98160/exercise-publish-packagee#readme"
+}
