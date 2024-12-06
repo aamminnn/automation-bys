@@ -1,0 +1,11 @@
+venv/
+logs/
+counter.txt
+debug/
+node_modules
+ignore/
+__pycache__
+*.pyc
+config.ini
+chromedriver-mac-x64/
+virtualenv/
